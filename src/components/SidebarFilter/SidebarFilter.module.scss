@@ -1,0 +1,126 @@
+@import "../../assets/scss/_mixins/mixins.scss";
+
+
+
+.sidebar{
+    max-width: rem(230);
+    margin-bottom: rem(70);
+    transition: transform .2s;
+    @media(max-width: em(1340)){
+        background-color: white;
+        max-width: 30%;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        overflow: auto;
+        flex-direction: column;
+        align-items: center;
+        padding: rem(30);
+        box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.7);
+        transform: translateX(-120%);
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+    }
+    @media(max-width: em(767)){
+        max-width: 50%;
+    }
+    @media(max-width: em(480)){
+        max-width: 85%;
+    }
+}
+.close{
+    margin-bottom: rem(20);
+}
+.flex{
+    @media(max-width: em(1340)){
+        overflow: auto;
+        &::-webkit-scrollbar{
+            width: 0;
+        }
+    }
+}
+.sidebarActive{
+    transform: translateX(0);
+}
+.path{
+    display: flex;
+    color: #424242;
+    align-items: center;
+    gap: rem(10);
+    margin-bottom: rem(65);
+    p{
+        color: #424242;
+    }
+    span{
+        display: flex;
+    }
+}
+.block{
+    margin-bottom: rem(20);
+    padding: 0 0 rem(25) 0;
+    border-bottom: 1px solid #BDBDBD;
+}
+.type{
+    font-weight: 600;
+    margin-bottom: rem(10);
+}
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: rem(10);
+}
+.item{
+    display: flex;
+    gap: rem(8);
+    align-items: center;
+    p{
+        font-size: rem(14);
+    }
+}
+.checkbox{
+    appearance: none;
+    background-color: transparent;
+    width: rem(14);
+    height: rem(14);
+    border-radius: rem(3);
+    border: 1px solid #BDBDBD;
+    cursor: pointer;
+    position: relative;
+    &:checked{
+        border: 1px solid #976464;
+        &:after{
+            content: "";
+            background-image: url("../../assets/images/icons/complete.svg");
+            max-width: rem(11);
+            width: 100%;
+            height: rem(11);
+            position: absolute;
+            background-size: cover;
+            left: 0px;
+            top: 0;
+        }
+    }
+}
+
+.view,
+.delete{
+    padding: rem(16) rem(80);
+    margin-bottom: rem(16);
+    font-size: rem(14);
+    @include adp('padding-left', 80, 30);
+    @include adp('padding-right', 80, 30);
+    border: 0;
+    &:not(.delete){
+        font-weight: 600;
+        @media(max-width: em(1340)){
+            margin-top: rem(10);
+        }
+    }
+}
+.result{
+    text-align: center;
+    color: #BDBDBD;
+    font-size: rem(14);
+}
