@@ -7,7 +7,7 @@ import Bonus from "./pages/BonusProgramm";
 import About from "./pages/About";
 import Product from "./pages/Product";
 
-function App() {
+const App:React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<MainLayout/>}>
@@ -16,7 +16,7 @@ function App() {
         <Route path="payment" element={<Payment/>}/>
         <Route path="bonus-programm" element={<Bonus/>}/>
         <Route path="about" element={<About/>}/>
-        <Route path="product" element={<Product/>}/>
+        <Route path="product/:id" element={<Product/>}/>
       </Route>
     </Routes>
   );

@@ -41,7 +41,6 @@ const Catalog: React.FC = () => {
   React.useEffect(() => {
     fetch();
   }, []); 
-  console.log(products)
 
 
 
@@ -70,7 +69,7 @@ const Catalog: React.FC = () => {
         <ul className={styles.list}>
 
         { products.map((item) => (
-          <Card id={item.id} name={item.name} image={item.image} price={item.price}/>
+          <Card id={item.id} name={item.name} image={item.image} price={item.price} key={item.id}/>
           ))
         }
         </ul>

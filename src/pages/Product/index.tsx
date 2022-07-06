@@ -1,34 +1,54 @@
+import React from "react";
 import Icon from "../../components/_icons/Icon";
 import cx from "classnames";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 import styles from "./Product.module.scss";
 import common from "../../assets/scss/_common-styles/common-styles.module.scss";
 
-//import img from "../../../public/assets/images/home/product-1.jpg";
-
 
 
 const Product: React.FC = () => {
+
+  const [product, setProduct] = React.useState<{
+    id: number;
+    name: string;
+    image: string;
+    price: number;
+    description: string;
+  }>();
+  const { id } = useParams();
+
+  React.useEffect(() => {
+    axios.get('http://127.0.0.1:8000/product/' + id)
+    .then(response => {
+      setProduct(response.data);
+    })
+  }, []);
+
+  if(!product){
+    return <h1>Загрузка...</h1>
+  }
+
   return(
     <section className={styles.product}>
       <div className={styles.grid}>
         <div className={styles.img}>
-          <img src='' />
+          <img src={`/${product.image}`} />
         </div>
         <div className={styles.rightBlock}>
           <div className={styles.name}>
-            <p>Шпагат Macrametr 4 мм, 100 нитей</p>
+            <p>{product.name}</p>
             <Icon className={styles.icon} icon="favourites-none" size={20}/>
           </div>
           <p className={styles.description}>
-            Хлопковый шпагат для рукоделия 4 мм состоит из 100 тонких скрученных нитей. 
-            Для создания модных перьев (листьев), кисточек, панно, ловцов снов, брелков, украшений, салфеток, кашпо, наволочек и других изделий в технике макраме. 
-            Мягкий и приятный на ощупь, при желании, можно легко расплести в бахрому.
+            {product.description}
           </p>
 
-          <p className={styles.characteristics}>Xарактеристики</p>
+          <p className={styles.title}>Xарактеристики</p>
           <ul className={styles.list}>
             <li className={styles.item}>
               <p>Длина</p>
@@ -48,7 +68,7 @@ const Product: React.FC = () => {
             </li>
           </ul>
           <div className={styles.addToCart}>
-            <p className={styles.price}>332 ₽</p>
+            <p className={styles.price}>{product.price} ₽</p>
             <div className={styles.count}>
               <button className={styles.minus}>&minus;</button>
               <p className={styles.result}>0</p>
@@ -59,7 +79,7 @@ const Product: React.FC = () => {
         </div>
       </div>
 
-      <div className={common.Container}>
+      {/* <div className={common.Container}>
         <Swiper className={styles.slider}
             slidesPerView={3.5}
             navigation={{
@@ -99,7 +119,7 @@ const Product: React.FC = () => {
               </button>
             </div>
           </Swiper>
-        </div>
+        </div> */}
     </section>
   );
 }

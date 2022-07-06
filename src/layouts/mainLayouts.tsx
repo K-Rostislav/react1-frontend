@@ -23,8 +23,8 @@ const MainLayout: React.FC = () => {
       <Header />
 
       <main className={styles.main}>
-        { location.pathname !=="/product" && <Slider/>}
-        { location.pathname !=="/" &&
+        {location.pathname !=="/product" && <Slider/>}
+        {location.pathname !=="/" &&
         <div className={styles.path}>
           <div className={cx(styles.wrapper, common.ContainerPadding)}>
             <p>Главная</p>
@@ -40,7 +40,9 @@ const MainLayout: React.FC = () => {
             {location.pathname == "/catalog" && <SidebarFilter/>}
           </MediaQuery>
           <MediaQuery minWidth={1340}>
-            {location.pathname !=="/" && location.pathname !=="/product" && location.pathname !=="/catalog" && <SidebarCatalog/>}
+            {location.pathname == "/payment" && <SidebarCatalog/>}
+            {location.pathname == "/bonus-programm" && <SidebarCatalog/>}
+            {location.pathname == "/about" && <SidebarCatalog/>}
           </MediaQuery>
           <Outlet />
         </div>

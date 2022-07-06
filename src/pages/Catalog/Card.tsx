@@ -14,11 +14,11 @@ type CardType = {
   price: number;
 }
 
-const Card: React.FC<CardType> = ({id, name, image, price}) => {
+const Card: React.FC<CardType> = ({ id, name, image, price }) => {
 
   return(
-    <li key={id}>
-    <Link to="/product" className={styles.card}>
+    <li>
+    <Link to={`/product/${id}`} className={styles.card}>
       <div className={styles.icons}>
         <button className={styles.favourites} type="button">
           <Icon icon="favourites-none" size={16}/>
