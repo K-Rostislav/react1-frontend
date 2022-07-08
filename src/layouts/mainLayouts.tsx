@@ -23,8 +23,9 @@ const MainLayout: React.FC = () => {
       <Header />
 
       <main className={styles.main}>
-        {location.pathname !=="/product" && <Slider/>}
-        {location.pathname !=="/" &&
+        {location.pathname !=="/product" &&
+        location.pathname !=="/search" && <Slider/>}
+        {location.pathname !=="/" && location.pathname !=="/search" &&
         <div className={styles.path}>
           <div className={cx(styles.wrapper, common.ContainerPadding)}>
             <p>Главная</p>

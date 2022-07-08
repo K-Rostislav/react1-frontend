@@ -1,5 +1,6 @@
 import Icon from "../_icons/Icon";
 import cx from "classnames";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./Header.module.scss";
 import common from "../../assets/scss/_common-styles/common-styles.module.scss";

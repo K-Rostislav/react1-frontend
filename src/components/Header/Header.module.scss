@@ -127,6 +127,7 @@
         top: 50%;
         transform: translateY(-50%);
         right: rem(15);
+        cursor: pointer;
     }
     @media(max-width: em(1024)){
        width: 100%;

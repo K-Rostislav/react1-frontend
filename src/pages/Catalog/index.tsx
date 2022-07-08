@@ -6,45 +6,38 @@ import { useAppDispatch } from "../../redux/store";
 import { openSidebar } from "../../redux/filterSlice/slice";
 import { useSelector } from "react-redux";
 import { selectorFilterSlice } from "../../redux/filterSlice/selectors";
-import axios from "axios";
+import { selectorProductSlice } from "../../redux/productSlice/selectors";
+import { selectorSearchSlice } from "../../redux/searchSlice/selectors";
 
 import styles from "./Catalog.module.scss";
 import common from "../../assets/scss/_common-styles/common-styles.module.scss";
 
 import Sidebar from "../../components/SidebarFilter";
 import Card from "./Card";
+import { fetchProducts } from "../../redux/axios/asyncActions";
+import { productsType } from "../../redux/productSlice/slice";
 
 
 
 const Catalog: React.FC = () => {
 
-
-
   const dispatch = useAppDispatch();
   const flag = useSelector(selectorFilterSlice);
+  const products = useSelector(selectorProductSlice);
+  const search = useSelector(selectorSearchSlice);
+  console.log(products)
 
-  const [products, setProducts] = React.useState<{
-    id: number;
-    name: string;
-    image: string;
-    price: number;
-    description: string
-  }[]>([]);
 
-  async function fetch () {
-    await axios.get('http://127.0.0.1:8000/products')
-    .then(response => {
-      setProducts(response.data);
-    })
-  }
+  const searchUrl = `${search ? `?search=${search}` : ""}`;
+
 
   React.useEffect(() => {
-    fetch();
-  }, []); 
-
-
-
-
+    dispatch(
+      fetchProducts({
+        searchUrl,
+      })
+    )
+  }, [search]); 
 
 
 
@@ -68,10 +61,11 @@ const Catalog: React.FC = () => {
         </div>
         <ul className={styles.list}>
 
-        { products.map((item) => (
+        {products.map((item: productsType) => (
           <Card id={item.id} name={item.name} image={item.image} price={item.price} key={item.id}/>
           ))
         }
+
         </ul>
       </div>
       <MediaQuery maxWidth={1340}>
