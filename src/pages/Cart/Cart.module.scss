@@ -1,0 +1,154 @@
+@import "../../assets/scss/_mixins/mixins.scss";
+
+
+//form===================================================================================
+.cart{
+    padding-bottom: rem(120);
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(140);
+}
+.title{
+    margin-bottom: rem(40);
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: rem(70);
+}
+.city{
+    display: flex;
+    flex-direction: column;
+    max-width: rem(520);
+    gap: rem(25);
+    margin-bottom: rem(25);
+}
+.address{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: rem(16);
+    margin-bottom: rem(25);
+}
+.name{
+    display: flex;
+    gap: rem(16);
+    margin-bottom: rem(25);
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: rem(10);
+    margin-bottom: rem(25);
+}
+.wrapperCheckbox,
+.wrapperRadio{
+    display: flex;
+    gap: rem(15);
+    align-items: center;
+    &:not(.wrapperCheckbox){
+        margin-bottom: rem(10);
+    }
+}
+.text{
+    font-size: rem(12);
+}
+.input{
+    padding: rem(16) rem(25);
+    width: 100%;
+}
+.errorInput{
+    border: 1px solid red;
+    &::placeholder{
+        color: red;
+    }
+}
+
+
+
+
+//cart====================================================================================
+.item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: rem(25) 0;
+    &:not(:last-child){
+        border-bottom: 1px solid #EFEFEF;
+    }
+}
+.img{
+    max-width: rem(170);
+    img{
+        max-width: rem(170);
+        object-fit: contain;
+        height: rem(130);
+    }
+}
+.description{
+    display: flex;
+    align-items: center;
+    gap: rem(50);
+}
+.nameItem{
+    font-weight: 600;
+    font-size: rem(18);
+}
+.price{
+    font-size: rem(24);
+    font-weight: 600;
+    min-width: rem(85);
+    white-space: nowrap;
+}
+.delete{
+    min-width: rem(24);
+    cursor: pointer;
+    color: #BDBDBD;
+    &:active{
+        color: red;
+    }
+}
+.payment{
+    background-color: #FAF9F9;
+    padding: rem(30) rem(40);
+    border-radius: rem(20);
+}
+.block{
+    display: flex;
+    align-items: center;
+    gap: rem(25);
+    &:not(:last-child){
+        margin-bottom: rem(20);
+    }
+}
+.blockItem{
+    font-size: rem(18);
+    font-weight: 600;
+    border-bottom: 1px solid #EFEFEF;
+    flex-grow: 1;
+}
+.cost{
+    font-size: rem(24);
+    font-weight: 600;
+}
+.totalPrice{
+    font-size: rem(52);
+    text-align: right;
+}
+.button{
+    padding: rem(15) rem(45);
+    white-space: nowrap;
+}
+.policy{
+    font-size: rem(12);
+}
+.notFound{
+    text-align: center;
+    @media(min-width: em(1340)){
+        position: relative;
+        left: 100%;
+        top: 200%;
+        transform: translateX(-30%);
+    }
+}

@@ -69,10 +69,10 @@ const Product: React.FC = () => {
           </ul>
           <div className={styles.addToCart}>
             <p className={styles.price}>{product.price} ₽</p>
-            <div className={styles.count}>
-              <button className={styles.minus}>&minus;</button>
-              <p className={styles.result}>0</p>
-              <button className={styles.plus}>+</button>
+            <div className={common.CountItem}>
+              <button className={common.minus}>&minus;</button>
+              <p className={common.result}>0</p>
+              <button className={common.plus}>+</button>
             </div>
             <button className={cx(styles.button, common.BtnBackground)}>Добавить в корзину</button>
           </div>

@@ -17,7 +17,6 @@ interface productsSliceType {
 const initialState: productsSliceType = {
   products: [],
 }
-console.log(initialState)
 
 export const productSlice = createSlice({
   name: 'product',

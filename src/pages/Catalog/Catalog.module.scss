@@ -135,6 +135,7 @@
     font-size: rem(14);
     color: #976464;
     margin: 0 auto;
+    position: relative;
     p{
         color: #976464;
         min-width: rem(75);
@@ -145,4 +146,11 @@
             color: white;
         }
     }
+}
+.count{
+    position: absolute;
+    top: 0;
+    transform: translateY(-40%);
+    right: 2%;
+    padding: 0;
 }

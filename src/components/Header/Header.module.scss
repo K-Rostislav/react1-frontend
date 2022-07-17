@@ -138,6 +138,7 @@
     display: flex;
     align-items: center;
     padding: em(10) em(20);
+    position: relative;
     gap: rem(5);
     p{
         color: #976464;
@@ -159,7 +160,14 @@
         padding: em(5) em(10);
     }
 }
-
+.count{
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateY(-40%);
+    right: 2%;
+    padding: 0;
+}
 
 
 

@@ -16,7 +16,7 @@ const Search: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const value = useSelector(selectorSearchSlice);
-  const debounced = useDebounce(valueSearch, 500);
+  const debounced = useDebounce(valueSearch, 400);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     searchValue(event.target.value)

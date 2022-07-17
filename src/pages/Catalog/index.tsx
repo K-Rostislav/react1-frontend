@@ -21,23 +21,40 @@ import { productsType } from "../../redux/productSlice/slice";
 
 const Catalog: React.FC = () => {
 
-  const dispatch = useAppDispatch();
-  const flag = useSelector(selectorFilterSlice);
-  const products = useSelector(selectorProductSlice);
-  const search = useSelector(selectorSearchSlice);
-  console.log(products)
+  const [sort, setSort] = React.useState<string>('')
 
+  const dispatch = useAppDispatch()
+  const {flag, type, composition, manufacturer} = useSelector(selectorFilterSlice)
+  const products = useSelector(selectorProductSlice)
+  const searchf = useSelector(selectorSearchSlice)
 
-  const searchUrl = `${search ? `?search=${search}` : ""}`;
+  // const searchUrl = `${search ? `search=${search}` : ""}`
+  // const sortUrl = `${filter ? `orderBy=${filter}` : ""}`
+  const search = searchf
+  const orderBy = sort
 
+  const setFlag = () => {
+    dispatch(openSidebar(!flag))
+  }
+
+  const asc = () => {
+    setSort('asc')
+  }
+  const desc = () => {
+    setSort('desc')
+  }
 
   React.useEffect(() => {
     dispatch(
       fetchProducts({
-        searchUrl,
+        search,
+        orderBy,
+        type,
+        composition,
+        manufacturer
       })
     )
-  }, [search]); 
+  }, [search, sort]); 
 
 
 
@@ -46,15 +63,15 @@ const Catalog: React.FC = () => {
       <div  className={styles.container}>
         <div className={styles.sort}>
           <MediaQuery maxWidth={1340}>
-            <button onClick={() => {dispatch(openSidebar(!flag))}} className={cx(styles.filter, common.BtnGray)}>
+            <button onClick={setFlag} className={cx(styles.filter, common.BtnGray)}>
               Фильтр
             </button>
           </MediaQuery>
-          <button className={cx(styles.asc, common.BtnGray)}>
+          <button onClick={asc} className={cx(styles.asc, common.BtnGray)}>
             Цена
             <span><Icon className={styles.sortIcon} icon="arrow" size={15}/></span>
           </button>
-          <button className={cx(styles.desc, common.BtnGray)}>
+          <button onClick={desc} className={cx(styles.desc, common.BtnGray)}>
             Цена
             <span><Icon className={styles.sortIcon} icon="arrow" size={15}/></span>
           </button>
@@ -62,7 +79,12 @@ const Catalog: React.FC = () => {
         <ul className={styles.list}>
 
         {products.map((item: productsType) => (
-          <Card id={item.id} name={item.name} image={item.image} price={item.price} key={item.id}/>
+          <Card key={item.id}
+            id={item.id} 
+            name={item.name} 
+            image={item.image} 
+            price={item.price} 
+          />
           ))
         }
 

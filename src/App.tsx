@@ -6,6 +6,7 @@ import Payment from "./pages/Payment";
 import Bonus from "./pages/BonusProgramm";
 import About from "./pages/About";
 import Product from "./pages/Product";
+import Cart from "./pages/Cart";
 
 const App:React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App:React.FC = () => {
         <Route path="payment" element={<Payment/>}/>
         <Route path="bonus-programm" element={<Bonus/>}/>
         <Route path="about" element={<About/>}/>
+        <Route path="cart" element={<Cart/>}/>
         <Route path="product/:id" element={<Product/>}/>
       </Route>
     </Routes>

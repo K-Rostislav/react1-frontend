@@ -79,31 +79,6 @@
         font-size: rem(14);
     }
 }
-.checkbox{
-    appearance: none;
-    background-color: transparent;
-    width: rem(14);
-    height: rem(14);
-    border-radius: rem(3);
-    border: 1px solid #BDBDBD;
-    cursor: pointer;
-    position: relative;
-    &:checked{
-        border: 1px solid #976464;
-        &:after{
-            content: "";
-            background-image: url("../../assets/images/icons/complete.svg");
-            max-width: rem(11);
-            width: 100%;
-            height: rem(11);
-            position: absolute;
-            background-size: cover;
-            left: 0px;
-            top: 0;
-        }
-    }
-}
-
 .view,
 .delete{
     padding: rem(16) rem(80);
