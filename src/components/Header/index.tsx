@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import MediaQuery from 'react-responsive';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import styles from "./Header.module.scss";
 import common from "../../assets/scss/_common-styles/common-styles.module.scss";
@@ -9,21 +9,23 @@ import mainLogo from "../../assets/images/home/logo.png";
 
 import TopNavigation from "./TopNavigation";
 import PagesNavigation from "./PagesNavigation";
-import ClienNavigation from "./ClientNavigation";
+
 import BurgerMenu from "./BurgerMenu";
-import Search from "./Search";
+import ClientNavigation from "./ClientNavigation";
+import HeaderModal from "./HeaderModal";
 
 const Header: React.FC = () => {
   const [menu, setActiveMenu] = React.useState(false);
+  const headerHeight = useRef<HTMLElement>(null)
 
 
   return(
-    <header className={styles.header}>
+    <header ref={headerHeight} className={styles.header}>
 
       <MediaQuery minWidth={1024}>
       <div className={styles.headerTop}>
         <div className={common.ContainerPadding}>
-            <TopNavigation/>
+          <TopNavigation/>
         </div>
       </div>
       </MediaQuery>
@@ -42,11 +44,7 @@ const Header: React.FC = () => {
 
         <div className={styles.navigationClient}>
 
-          <MediaQuery minWidth={767}>
-            <Search/>
-          </MediaQuery>
-
-          <ClienNavigation/>
+          <ClientNavigation/>
 
           <MediaQuery maxWidth={1024}>
             <button onClick={() => {setActiveMenu(!menu)}} className={styles.buttonBurger}>
@@ -64,6 +62,10 @@ const Header: React.FC = () => {
         <div className={styles.adaptive}>
           <PagesNavigation/>
         </div>
+      </MediaQuery>
+
+      <MediaQuery minWidth={1200}>
+        <HeaderModal />
       </MediaQuery>
 
     </header>

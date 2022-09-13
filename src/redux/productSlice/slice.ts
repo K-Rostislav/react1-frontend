@@ -1,43 +1,54 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { fetchProducts } from '../axios/asyncActions';
+import { productsAction } from '../actions/productsAction';
 
+
+enum EnumStatus {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
 
 export type productsType = {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  description: string;
+  _id: string
+  name: string
+  image: string
+  price: number
+  description: string
+  type: string
+  composition: string
+  manufacturer: string
 }
 
 interface productsSliceType {
-    products: productsType[];
+    products: productsType[]
+    status: string
 }
 
 const initialState: productsSliceType = {
   products: [],
+  status: ''
 }
 
-export const productSlice = createSlice({
+const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    products(state, action: PayloadAction<productsType[]>){
+  },
+  extraReducers: (builder) => {
+    builder.addCase(productsAction.pending, (state) => {
+      state.products = [];
+      state.status = EnumStatus.LOADING
+    })
+    builder.addCase(productsAction.fulfilled, (state, action: PayloadAction<productsType[]>) => {
         state.products = action.payload;
-      },
-    },
-    extraReducers: (builder) => {
-      builder.addCase(fetchProducts.pending, (state) => {
-        state.products = [];
-      })
-      builder.addCase(fetchProducts.fulfilled, (state, action: PayloadAction<productsType[]>) => {
-          state.products = action.payload;
-      })
-      builder.addCase(fetchProducts.rejected, (state) => {
-        state.products = [];
-      })
-    },
+        state.status = EnumStatus.SUCCESS
+    })
+    builder.addCase(productsAction.rejected, (state) => {
+      state.products = [];
+      state.status = EnumStatus.ERROR
+    })
+  },
 })
-export const { products } = productSlice.actions
+export const { } = productSlice.actions
 
 export default productSlice.reducer

@@ -1,25 +1,52 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { searchListAction } from '../actions/searchListAction'
+import { IItemsCart } from '../cartSlice/slice'
 
+
+
+enum EnumStatus {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
 
 
 type searchSliceType = {
-    value: string;
+  listItem: IItemsCart[]
+  status: EnumStatus
+  search: string
 }
 
 const initialState: searchSliceType = {
-  value: '',
+  listItem: [],
+  status: EnumStatus.LOADING,
+  search: ''
 }
 
-export const searchSlice = createSlice({
+const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    search(state, action: PayloadAction<string>){
-        state.value = action.payload;
-    },
+    setSearch (state, action: PayloadAction<string>) {
+      state.search = action.payload
+    }
+  },
+  extraReducers: (builder) => {
+    builder.addCase(searchListAction.pending, (state) => {
+      state.listItem = []
+      state.status = EnumStatus.LOADING
+    })
+    builder.addCase(searchListAction.fulfilled, (state, action: PayloadAction<IItemsCart[]>) => {
+      state.listItem = action.payload
+      state.status = EnumStatus.SUCCESS
+    })
+    builder.addCase(searchListAction.rejected, (state) => {
+      state.listItem = []
+      state.status = EnumStatus.ERROR
+    })
   }
 })
 
-export const { search } = searchSlice.actions
+export const { setSearch } = searchSlice.actions
 
 export default searchSlice.reducer

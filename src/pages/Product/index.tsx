@@ -5,33 +5,63 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { selectorCartSlice } from "../../redux/cartSlice/selectors";
+import { useAppDispatch } from "../../redux/store";
+import { addItemCart } from "../../redux/cartSlice/slice";
 
 import styles from "./Product.module.scss";
 import common from "../../assets/scss/_common-styles/common-styles.module.scss";
 
+import Counter from "../../components/Counter";
+import CartMessage from "../../components/CartMessage";
+
 
 
 const Product: React.FC = () => {
+  const dispatch = useAppDispatch()
+  const { cartItems } = useSelector(selectorCartSlice)
+  const [cartMessage, setCartMessage] = React.useState<boolean>(false)
 
   const [product, setProduct] = React.useState<{
-    id: number;
-    name: string;
-    image: string;
-    price: number;
-    description: string;
+    _id: string
+    name: string
+    image: string
+    price: number
+    description: string
   }>();
   const { id } = useParams();
 
+  const findItemCount = cartItems.find(item => item._id == id)?.count
+  const findItem = cartItems.find(item => item._id == id)
+
+
+  const addToCart = () => {
+    if(product){
+      dispatch(addItemCart({
+        _id: product._id, 
+        name: product.name, 
+        image: product.image,
+        price: product.price,
+        count: 0
+      }))
+      !findItem && setCartMessage(true)
+    }
+  }
+
+
   React.useEffect(() => {
-    axios.get('http://127.0.0.1:8000/product/' + id)
+    axios.get('products/' + id)
     .then(response => {
       setProduct(response.data);
     })
   }, []);
 
+
   if(!product){
     return <h1>Загрузка...</h1>
   }
+
 
   return(
     <section className={styles.product}>
@@ -69,12 +99,10 @@ const Product: React.FC = () => {
           </ul>
           <div className={styles.addToCart}>
             <p className={styles.price}>{product.price} ₽</p>
-            <div className={common.CountItem}>
-              <button className={common.minus}>&minus;</button>
-              <p className={common.result}>0</p>
-              <button className={common.plus}>+</button>
-            </div>
-            <button className={cx(styles.button, common.BtnBackground)}>Добавить в корзину</button>
+            {findItemCount && findItemCount &&
+              <Counter _id={product._id} count={findItemCount}/>
+            }
+            <button type="button" onClick={addToCart} className={cx(styles.button, common.BtnBackground)}>Добавить в корзину</button>
           </div>
         </div>
       </div>
@@ -120,6 +148,11 @@ const Product: React.FC = () => {
             </div>
           </Swiper>
         </div> */}
+
+        {cartMessage && 
+          <CartMessage />
+        }
+
     </section>
   );
 }

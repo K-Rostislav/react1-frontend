@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm, SubmitHandler  } from "react-hook-form"
 import cx from "classnames"
-import Input from 'react-phone-number-input/input'
 
 import styles from "./Cart.module.scss"
 import common from "../../assets/scss/_common-styles/common-styles.module.scss"
@@ -29,11 +28,8 @@ interface IForm {
 
 const CartForm: React.FC = () => {
 
-  const [value, setValue] = React.useState<string>('');
-
   const { register, handleSubmit, formState: { errors }, reset } = useForm<IForm>({mode: 'onChange'});
   const onSubmit: SubmitHandler<IForm> = data => {
-    console.log(data)
     reset()
   }
 
@@ -116,7 +112,7 @@ const CartForm: React.FC = () => {
 				<div className={styles.name}>
 					<input 
 						placeholder="Фамилия" 
-						className={errors?.surename ? cx(styles.errorInput, styles.input, common.Input) : cx(styles.input, common.Input)}
+						className={errors?.surename ? cx(common.ErrorInput, styles.input, common.Input) : cx(styles.input, common.Input)}
 						type="text"
 						{...register('surename', {
 							required: true
@@ -124,7 +120,7 @@ const CartForm: React.FC = () => {
 					/>
 					<input 
 						placeholder="Имя" 
-						className={errors?.name ? cx(styles.errorInput, styles.input, common.Input) : cx(styles.input, common.Input)}
+						className={errors?.name ? cx(common.ErrorInput, styles.input, common.Input) : cx(styles.input, common.Input)}
 						type="text"
 						{...register('name', {
 							required: true
@@ -133,7 +129,7 @@ const CartForm: React.FC = () => {
 
 					<input 
 						placeholder="Отчество"
-						className={errors?.patronymic ? cx(styles.errorInput, styles.input, common.Input) : cx(styles.input, common.Input)}
+						className={errors?.patronymic ? cx(common.ErrorInput, styles.input, common.Input) : cx(styles.input, common.Input)}
 						type="text" 
 						{...register('patronymic', {
 							required: true
@@ -144,7 +140,7 @@ const CartForm: React.FC = () => {
 
 				<div className={styles.wrapper}>
 					<input 
-						className={errors?.number ? cx(styles.errorInput, styles.input, common.Input) : cx(styles.input, common.Input)}
+						className={errors?.number ? cx(common.ErrorInput, styles.input, common.Input) : cx(styles.input, common.Input)}
 						placeholder="Введите номер"
 						type="number"
 						{...register('number', {
@@ -158,7 +154,7 @@ const CartForm: React.FC = () => {
 				<div className={styles.wrapper}>
 					<input
 						placeholder="E-mail" 
-						className={errors?.email ? cx(styles.errorInput, styles.input, common.Input) : cx(styles.input, common.Input)}
+						className={errors?.email ? cx(common.ErrorInput, styles.input, common.Input) : cx(styles.input, common.Input)}
 						type="email" 
 						{...register('email', {
 						required: true,

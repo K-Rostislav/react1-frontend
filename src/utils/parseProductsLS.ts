@@ -1,4 +1,4 @@
 export const parseProductsLS = () => {
-    const data = localStorage.getItem('cart')
-    return data ? JSON.parse(data) : []
+    const json = localStorage.getItem('cart')
+    return json ? JSON.parse(json) : [];
 }

@@ -1,25 +1,24 @@
-import React from "react"
+import React, { useEffect } from "react"
 import cx from "classnames"
 import { useForm, SubmitHandler  } from "react-hook-form"
 import Icon from "../../components/_icons/Icon"
 import { useSelector } from "react-redux"
-import { selectorCartSlice } from "../../redux/carttSlice/selectors"
+import { selectorCartSlice } from "../../redux/cartSlice/selectors"
 import { useAppDispatch } from "../../redux/store"
 
 import styles from "./Cart.module.scss"
 import common from "../../assets/scss/_common-styles/common-styles.module.scss"
 
 import CartForm from "./CartForm"
-import CartItems from "./CartItem"
+import CartItem from "./CartItem"
 
 
 const Cart = () => {
-  const dispatch = useAppDispatch()
 
-  const { items, totalPrice, totalCount } = useSelector(selectorCartSlice)
+  const { cartItems, totalPrice, totalCount } = useSelector(selectorCartSlice)
 
 
-  if(items.length !== 0){
+  if(cartItems.length !== 0){
     return(
       <section className={styles.cart}>
         <div className={cx(styles.grid, common.ContainerPadding)}>
@@ -30,9 +29,9 @@ const Cart = () => {
             <h2>Состав заказа</h2>
 
             <div>
-              {items.map(item => (
-                <CartItems key={item.id} 
-                  id={item.id}
+              {cartItems.map(item => (
+                <CartItem key={item.name} 
+                  _id={item._id}
                   name={item.name}
                   image={item.image}
                   price={item.price}

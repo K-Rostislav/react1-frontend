@@ -1,0 +1,61 @@
+@import "../../assets/scss/_mixins/mixins.scss";
+
+
+
+
+
+
+.message{
+    background: linear-gradient(to right, rgb(0, 148, 0), rgb(0, 202, 0));
+    position: fixed;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    padding: rem(20);
+    border-radius: rem(40);
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    gap: rem(20);
+    animation-name: message, opacity;
+    animation-duration: 300ms, 1.5s;
+    animation-delay: 0ms, 300ms;
+    animation-fill-mode: forwards, forwards;
+    .icon{
+        background-color: white;
+        border-radius: 50%;
+        width: rem(40);
+        height: rem(40);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    p{
+        color: white;
+        font-weight: 700;
+        font-size: rem(16);
+    }
+}
+@keyframes message {
+    0%{
+        bottom: -10%;
+    }
+    50%{
+        bottom: 6%;
+    }
+    100%{
+        bottom: 5%;
+    }
+}
+@keyframes opacity {
+    0%{
+       opacity: 1;
+    }
+    80%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}

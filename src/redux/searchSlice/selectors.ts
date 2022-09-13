@@ -1,3 +1,3 @@
 import { RootState } from "../store"
 
-export const selectorSearchSlice = (state: RootState) => state.searchSlice.value;
+export const selectorSearchSlice = (state: RootState) => state.searchSlice;

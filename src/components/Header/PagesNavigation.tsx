@@ -13,21 +13,26 @@ const PagesNavigation: React.FC = () => {
   const arr: TypeArray[] = [
     {
       id: 1,
+      text: "Главная",
+      link: '/',
+    },
+    {
+      id: 2,
       text: "Каталог",
       link: 'catalog',
     },
     {
-      id: 2,
+      id: 3,
       text: "Оплата и доставка",
       link: 'payment',
     },
     {
-      id: 3,
+      id: 4,
       text: "Бонусная программа",
       link: 'bonus-programm',
     },
     {
-      id: 4,
+      id: 5,
       text: "О компании",
       link: 'about',
     },
