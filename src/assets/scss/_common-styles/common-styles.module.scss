@@ -126,6 +126,7 @@
         }
     }
     @media(max-width: em(480)) {
+        font-size: rem(14);
         &::placeholder{
             font-size: rem(14);
         }

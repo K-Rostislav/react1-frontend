@@ -76,7 +76,7 @@ const Login: React.FC = () => {
 
   return(
     <div onClick={closeLogin} className={loginFlag ? styles.background : common.DisplayNone}>
-      <form onSubmit={handleSubmit(onSubmit)} onClick={stopPropagation} className={loginFlag ? cx(styles.modal, styles.scale) : styles.modal}>
+      <form onSubmit={handleSubmit(onSubmit)} onClick={stopPropagation} className={loginFlag ? cx(styles.modal, styles.active) : styles.modal}>
         <button type="button" onClick={closeLogin} className={styles.close}>
           <Icon className={styles.icon} size={25} icon="close" />
         </button>

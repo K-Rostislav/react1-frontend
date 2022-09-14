@@ -19,7 +19,6 @@
     right: 0;
     display: flex;
     gap: rem(15);
-    z-index: 2;
     @media(max-width: em(480)) {
         gap: rem(10);
         top: rem(-60);

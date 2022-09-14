@@ -54,7 +54,7 @@ const Forgot: React.FC = () => {
 
   return(
     <div onClick={closeForgot} className={forgotFlag ? styles.background : common.DisplayNone}>
-      <form onSubmit={handleSubmit(onSubmit)} onClick={stopPropagation} className={forgotFlag ? cx(styles.modal, styles.scale) : styles.modal}>
+      <form onSubmit={handleSubmit(onSubmit)} onClick={stopPropagation} className={forgotFlag ? cx(styles.modal, styles.active) : styles.modal}>
         <button type="button" onClick={closeForgot} className={styles.close}>
           <Icon className={styles.icon} size={25} icon="close" />
         </button>

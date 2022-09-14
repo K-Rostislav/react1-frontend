@@ -136,4 +136,7 @@
     @media(max-width: em(767)){
         text-align: center;
     }
+    @media(max-width: em(480)){
+        font-size: rem(14);
+    }
 }
