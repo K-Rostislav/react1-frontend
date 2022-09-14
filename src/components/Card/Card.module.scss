@@ -24,8 +24,8 @@
             transform: scale(1.03);
         }
     }
-    @media(max-width: em(360)){
-        padding: rem(10);
+    @media(max-width: em(480)){
+        padding: rem(15);
     }
 }
 .fav_icon{
@@ -114,6 +114,12 @@
         color: white;
         p{
             color: white;
+        }
+    }
+    @media(max-width: em(480)) {
+        height: rem(35);
+        p{
+            font-size: rem(12);
         }
     }
 }

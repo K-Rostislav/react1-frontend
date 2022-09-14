@@ -130,7 +130,7 @@
 //catalog==================================================================================
 .catalog{
     padding-top: rem(120);
-    @include adp('padding-top', 120, 70);
+    @include adp('padding-top', 120, 40);
     position: relative;
 }
 .catalogDecor{
@@ -155,7 +155,7 @@
     @media(max-width: em(1024)){
         grid-template-columns: repeat(2, 1fr);
     }
-    @media(max-width: em(767)){
+    @media(max-width: em(360)){
         grid-template-columns: 1fr;
     }
 }
@@ -224,6 +224,9 @@
     right: rem(-100);
     max-height: rem(200);
     z-index: 1;
+    @media(max-width: em(1024)){
+        right: rem(-70);
+    }
 }
 
 
@@ -234,14 +237,14 @@
 //expirence==================================================================================
 .experience{
     padding-top: rem(130);
-    @include adp('padding-top', 130, 70);
+    @include adp('padding-top', 130, 40);
 }
 .expTitle{
     margin-bottom: rem(80);
-    @include adp('margin-bottom', 70, 50);
+    @include adp('margin-bottom', 70, 20);
     text-align: center;
     font-size: rem(28);
-    @include adp('font-size', 28, 22);
+    @include adp('font-size', 28, 18);
 }
 .expList{
     display: grid;
@@ -267,11 +270,11 @@
 }
 .itemTitle{
     margin-bottom: rem(15);
-    @include adp('font-size', 24, 20);
+    @include adp('font-size', 24, 14);
 }
 .itemText{
     line-height: 150%;
-    @include adp('font-size', 16, 14);
+    @include adp('font-size', 16, 12);
 }
 
 
@@ -282,7 +285,7 @@
 //gallery==================================================================================
 .gallery{
     padding-top: rem(140);
-    @include adp('padding-top', 140, 70);
+    @include adp('padding-top', 140, 40);
 }
 .gridGallery{
     display: grid;
@@ -298,10 +301,10 @@
 }
 .galleryTitle{
     font-size: rem(28);
-    @include adp('font-size', 28, 22);
+    @include adp('font-size', 28, 18);
     text-align: center;
     margin-bottom: rem(70);
-    @include adp('margin-bottom', 70, 40);
+    @include adp('margin-bottom', 70, 20);
 }
 .galleryItem1,
 .galleryItem2,
@@ -402,8 +405,16 @@
 //form==================================================================================
 .sectionForm{
     padding: rem(200) 0 rem(60);
-    @include adp('padding-top', 200, 70);
+    @include adp('padding-top', 200, 20);
     position: relative;
+    @media(max-width: em(480)) {
+        padding-left: rem(50);
+        padding-right: rem(50);
+    }
+    @media(max-width: em(360)) {
+        padding-left: rem(20);
+        padding-right: rem(20);
+    }
 }
 .formDecor{
     position: absolute;
@@ -426,8 +437,8 @@
     margin-bottom: rem(70);
     font-size: rem(28);
     text-align: center;
-    @include adp('margin-bottom', 70, 40);
-    @include adp('font-size', 28, 22);
+    @include adp('margin-bottom', 70, 20);
+    @include adp('font-size', 28, 18);
 }
 .formName,
 .formNumber{
@@ -441,6 +452,9 @@
 .submit{
     p{
         max-width: rem(240);
+        @media(max-width: em(480)) {
+            font-size: rem(10);
+        }
     }
     @media(max-width: em(767)){
         flex-direction: column;
@@ -453,4 +467,7 @@
     padding: rem(15) rem(45);
     font-size: rem(16);
     margin-bottom: rem(10);
+    @media(max-width: em(480)) {
+        font-size: rem(14);
+    }
 }

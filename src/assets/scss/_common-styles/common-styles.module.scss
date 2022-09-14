@@ -125,6 +125,11 @@
             color: #976464;
         }
     }
+    @media(max-width: em(480)) {
+        &::placeholder{
+            font-size: rem(14);
+        }
+    }
 }
 .Сheckbox{
     appearance: none;

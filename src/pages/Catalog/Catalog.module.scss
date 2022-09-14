@@ -20,6 +20,10 @@
     display: flex;
     gap: rem(15);
     z-index: 2;
+    @media(max-width: em(480)) {
+        gap: rem(10);
+        top: rem(-60);
+    }
 }
 .asc,
 .desc{
@@ -54,6 +58,14 @@
 }
 .filter{
     padding: rem(8) rem(15);
+
+}
+.asc,
+.desc,
+.filter{
+    @media(max-width: em(480)) {
+        padding: rem(4) rem(10);
+    }
 }
 .list{
     display: grid;
