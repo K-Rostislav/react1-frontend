@@ -33,12 +33,12 @@ const CartItems: React.FC<ItemType> = ({_id, name, image, price, count}) => {
       <div className={styles.img}>
         <img src={image} alt="" />
       </div>
-      <div className={styles.description}>
-        <p className={styles.nameItem}>{name}</p>
+      <p className={styles.nameItem}>{name}</p>
+      <div className={styles.counter}>
         <Counter _id={_id} count={count}/>
-        <p className={styles.price}>{count ? price * count : price} ₽</p>
-        <Icon onClick={deleteItemCart} className={styles.delete} icon="icon-delete" size={24}/>
       </div>
+      <p className={styles.price}>{count ? price * count : price} ₽</p>
+      <Icon onClick={deleteItemCart} className={styles.delete} icon="icon-delete" size={24}/>
     </div>
   )
 }

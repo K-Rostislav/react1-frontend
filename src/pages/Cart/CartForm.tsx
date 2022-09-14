@@ -178,26 +178,6 @@ const CartForm: React.FC = () => {
 			
 			<div>
 				<h2 className={styles.title}>Способ оплаты</h2>
-
-				<div className={styles.wrapperRadio}>
-					<input 
-						className={common.Radio} 
-						value="Оплата при получении наличными или картой" 
-						type="radio" 
-						name="radio"
-						defaultChecked
-					/>
-					<p>Оплата при получении наличными или картой</p>
-				</div>
-				<div className={styles.wrapperRadio}>
-					<input 
-						className={common.Radio} 
-						name="radio"
-						value="Оплата банковской картой онлайн" 
-						type="radio"
-					/>
-					<p>Оплата банковской картой онлайн</p>
-				</div>
 			</div>
 		</form>
 	)
