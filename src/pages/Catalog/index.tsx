@@ -16,7 +16,7 @@ import styles from "./Catalog.module.scss";
 import common from "../../assets/scss/_common-styles/common-styles.module.scss";
 
 import Sidebar from "../../components/SidebarFilter";
-import Card from "./Card";
+import Card from "../../components/Card";
 import Skeleton from "../../components/skeleton";
 import { setOrderBy, setSearchParam } from "../../redux/urlSlice/slice";
 import { selectorUrlSlice } from "../../redux/urlSlice/selectors";

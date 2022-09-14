@@ -11,7 +11,7 @@ import { selectorAuthSlice } from "../../redux/authSlice/selectors";
 import { cardCount } from "../../utils/cardCount";
 import { favouritesIndicator } from "../../utils/favoritesIndicator";
 
-import styles from "./Catalog.module.scss";
+import styles from "./Card.module.scss";
 import common from "../../assets/scss/_common-styles/common-styles.module.scss";
 
 import CartMessage from "../../components/CartMessage";

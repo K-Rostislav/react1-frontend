@@ -1,0 +1,126 @@
+@import "../../assets/scss/_mixins/mixins.scss";
+
+
+
+
+
+.card{
+    background-color: white;
+    max-width: rem(245);
+    width: 100%;
+    padding: rem(30);
+    display: flex;
+    flex-direction: column;
+    border-radius: rem(20);
+    height: 100%;
+    box-shadow: 0px 0px 30px 0px rgba(68, 68, 68, 0.05);
+    transition: .2s;
+    @media(max-width: em(1640)){
+        max-width: 100%;
+    }
+    @media(min-width: em(767)){
+        &:hover{
+            box-shadow: 0px 0px 30px 0px rgba(68, 68, 68, 0.15);
+            transform: scale(1.03);
+        }
+    }
+    @media(max-width: em(360)){
+        padding: rem(10);
+    }
+}
+.fav_icon{
+    cursor: pointer;
+    animation-name: ease, favourites;
+    animation-duration: 200ms;
+    @keyframes favourites {
+        0%{
+            transform: scale(1);
+        }
+        50%{
+            transform: scale(2);
+        }
+        100%{
+            transform: scale(1);
+        }
+    }
+}
+.fav_icon_none{
+    cursor: pointer;
+}
+.icons{
+    display: flex;
+    justify-content: space-between;
+}
+.favourites{
+    background-color: unset;
+    border: 0;
+    color: #976464;
+}
+.icon_menu{
+    margin-left: auto;
+}
+.img{
+    max-width: rem(185);
+    height: rem(185);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    img{
+        max-width: 100%;
+        width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+}
+.name{
+    margin-bottom: rem(15);
+    line-height: 105%;
+    @media(max-width: em(480)) {
+        font-size: rem(12);
+    }
+}
+.description{
+    margin-bottom: rem(15);
+    flex-grow: 1;
+    p{
+        color: #C4C4C4;
+        font-size: rem(10);
+    }
+}
+.price{
+    margin-bottom: rem(16);
+    font-weight: 600;
+}
+.button{
+    border: 0;
+    display: flex;
+    padding: 0 rem(10);
+    width: 100%;
+    height: rem(50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: rem(10);
+    font-size: rem(14);
+    color: #976464;
+    margin: 0 auto;
+    position: relative;
+    p{
+        color: #976464;
+        min-width: rem(75);
+    }
+    &:active{
+        color: white;
+        p{
+            color: white;
+        }
+    }
+}
+.count{
+    position: absolute;
+    top: 0;
+    transform: translateY(-40%);
+    right: 2%;
+    padding: 0;
+}

@@ -11,7 +11,7 @@ import { profileAction } from "../../redux/actions/profileAction"
 import styles from "./Profile.module.scss"
 import common from "../../assets/scss/_common-styles/common-styles.module.scss"
 
-import Card from "../Catalog/Card"
+import Card from "../../components/Card"
 import { setToken } from "../../redux/authSlice/slice"
 
 const Profile: React.FC = () => {
