@@ -73,9 +73,7 @@ const MainLayout: React.FC = () => {
 
       <Footer/>
 
-      <MediaQuery minWidth={1024}>
-        <ButtonTop />
-      </MediaQuery>
+      <ButtonTop />
     </>
 	);
 }

@@ -4,7 +4,7 @@ import cx from "classnames";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import axios from "../../redux/axios"
 import { useSelector } from "react-redux";
 import { selectorCartSlice } from "../../redux/cartSlice/selectors";
 import { useAppDispatch } from "../../redux/store";
@@ -51,7 +51,8 @@ const Product: React.FC = () => {
 
 
   React.useEffect(() => {
-    axios.get('products/' + id)
+    window.scrollTo(0, 0)
+    axios.get(`products/${id}`)
     .then(response => {
       setProduct(response.data);
     })
