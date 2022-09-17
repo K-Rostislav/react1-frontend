@@ -26,7 +26,9 @@ const MainLayout: React.FC = () => {
   const location = useLocation()
 
   React.useEffect(() => {
-    windowScrollPos()
+    setTimeout(() => {
+      windowScrollPos()
+    }, 100)
   }, [location])
 
 	return (

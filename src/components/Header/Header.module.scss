@@ -186,12 +186,12 @@
       transform: translateX(0);
     }
     animation-name: backgroundBurgerOpen;
-    animation-duration: 500ms;
+    animation-duration: 400ms;
     animation-fill-mode: forwards;
   }
   &.close {
     animation-name: backgroundBurgerClose;
-    animation-duration: 500ms;
+    animation-duration: 400ms;
     animation-fill-mode: forwards;
   }
 }
@@ -230,7 +230,7 @@
   transform: translateX(100%);
   display: flex;
   flex-direction: column;
-  transition: transform 500ms ease-in-out;
+  transition: transform 400ms ease-in-out;
   overflow: scroll;
   @media (max-width: em(480)) {
     width: 100%;
