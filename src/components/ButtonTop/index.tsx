@@ -14,14 +14,14 @@ const ButtonTop: React.FC = () => {
   }
 
 
-  window.addEventListener('scroll', () => {
-    const elem = document.querySelector('.Header_header__6370a')
-    if (window.scrollY > elem?.clientHeight!) {
-      setFlag(true)
-    } else {
-      setFlag(false)
-    }
-  })
+  // window.addEventListener('scroll', () => {
+  //   const elem = document.querySelector('.Header_header__6370a')
+  //   if (window.scrollY > elem?.clientHeight!) {
+  //     setFlag(true)
+  //   } else {
+  //     setFlag(false)
+  //   }
+  // })
 
   window.addEventListener('touchmove', () => {
     const elem = document.querySelector('.Header_header__6370a')
