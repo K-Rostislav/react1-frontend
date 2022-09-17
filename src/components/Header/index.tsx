@@ -52,9 +52,9 @@ const Header: React.FC = () => {
         </div>
       </MediaQuery>
 
-      <MediaQuery minWidth={1200}>
+      {/* <MediaQuery minWidth={1200}> */}
         <HeaderModal />
-      </MediaQuery>
+      {/* </MediaQuery> */}
 
     </header>
   );
