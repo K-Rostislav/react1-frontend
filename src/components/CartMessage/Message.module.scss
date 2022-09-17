@@ -3,52 +3,96 @@
 .message {
   background: linear-gradient(to right, rgb(0, 148, 0), rgb(0, 202, 0));
   position: fixed;
-  bottom: -10%;
+  top: -10%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  padding: rem(20);
+  padding: rem(10) rem(10) rem(10) rem(20);
   -webkit-border-radius: rem(40);
   -moz-border-radius: rem(40);
   -ms-border-radius: rem(40);
   border-radius: rem(40);
   display: flex;
   align-items: center;
+  justify-content: center;
   opacity: 1;
   gap: rem(20);
   animation-name: message, opacity;
   animation-duration: 300ms, 1.5s;
   animation-delay: 0ms, 300ms;
   animation-fill-mode: forwards, forwards;
+  @media (max-width: em(767)) {
+    padding: rem(10);
+  }
+  @media (max-width: em(360)) {
+    width: 100%;
+    -webkit-border-radius: 0 0 rem(10) rem(10);
+    -moz-border-radius: 0 0 rem(10) rem(10);
+    -ms-border-radius: 0 0 rem(10) rem(10);
+    border-radius: 0 0 rem(10) rem(10);
+  }
   .icon {
     background-color: white;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     border-radius: 50%;
-    width: rem(40);
-    height: rem(40);
+    min-width: rem(40);
+    min-height: rem(40);
     display: flex;
     justify-content: center;
     align-items: center;
+    @include adp('min-width', 40, 20);
+    @include adp('min-height', 40, 20);
   }
   p {
     color: white;
     font-weight: 700;
     font-size: rem(16);
+    @include adp('font-size', 16, 10);
   }
 }
-@keyframes message {
-  0% {
-    bottom: -10%;
-  }
-  50% {
-    bottom: 6%;
-  }
-  100% {
-    bottom: 5%;
-  }
+.complete{
+  width: rem(28);
+  @include adp('width', 28, 12)
 }
+@media (min-width: em(1200)) {
+  @keyframes message {
+    0% {
+      top: -10%;
+    }
+    50% {
+      top: 12%;
+    }
+    100% {
+      top: 10%;
+    }
+  }  
+}
+@media (max-width: em(1200)) {
+  @keyframes message {
+    0% {
+      top: -10%;
+    }
+    50% {
+      top: 4%;
+    }
+    100% {
+      top: 2%;
+    }
+  }  
+}
+@media (max-width: em(360)) {
+  @keyframes message {
+    0% {
+      top: -10%;
+    }
+    100% {
+      top: 0;
+    }
+  } 
+}
+
 @keyframes opacity {
   0% {
     opacity: 1;

@@ -13,7 +13,7 @@ const CartMessage: React.FC = () => {
     <div className={styles.message}>
       <p>Товар добавлен в корзину</p>
       <div className={styles.icon}>
-        <Icon icon="complete" color="rgb(0, 202, 0)" size={28}/>
+        <Icon className={styles.complete} icon="complete" color="rgb(0, 202, 0)" />
       </div>
     </div>
   )

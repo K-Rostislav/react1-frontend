@@ -26,10 +26,12 @@ const MainLayout: React.FC = () => {
   const location = useLocation()
 
   React.useEffect(() => {
-    setTimeout(() => {
-      windowScrollPos()
-    }, 100)
+    windowScrollPos()
   }, [location])
+
+  window.addEventListener('touchmove', () => {
+    windowScrollPos()
+  })
 
 	return (
     <>
