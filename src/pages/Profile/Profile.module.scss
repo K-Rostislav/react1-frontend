@@ -12,6 +12,9 @@
   grid-template-columns: auto 1fr;
   box-shadow: 0px 0px 30px rgba(68, 68, 68, 0.3);
   -webkit-border-radius: rem(20);
+  -moz-border-radius: rem(20);
+  -ms-border-radius: rem(20);
+  border-radius: rem(20);
 }
 .block {
   padding: 0 rem(65);
@@ -34,6 +37,9 @@
 }
 .img {
   -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
   overflow: hidden;
   width: rem(100);
   height: rem(100);
@@ -64,6 +70,9 @@
   cursor: pointer;
   transition: 0.2s;
   -webkit-border-radius: rem(20);
+  -moz-border-radius: rem(20);
+  -ms-border-radius: rem(20);
+  border-radius: rem(20);
   position: relative;
   overflow: hidden;
 

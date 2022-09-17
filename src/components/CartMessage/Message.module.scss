@@ -9,6 +9,9 @@
   z-index: 2;
   padding: rem(20);
   -webkit-border-radius: rem(40);
+  -moz-border-radius: rem(40);
+  -ms-border-radius: rem(40);
+  border-radius: rem(40);
   display: flex;
   align-items: center;
   opacity: 1;
@@ -20,6 +23,9 @@
   .icon {
     background-color: white;
     -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
     width: rem(40);
     height: rem(40);
     display: flex;

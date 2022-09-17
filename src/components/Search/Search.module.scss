@@ -8,6 +8,9 @@
   height: 12%;
   box-shadow: 0px 0px 30px 0px rgba(68, 68, 68, 0.5);
   -webkit-border-radius: 0 0 rem(20) rem(20);
+  -moz-border-radius: 0 0 rem(20) rem(20);
+  -ms-border-radius: 0 0 rem(20) rem(20);
+  border-radius: 0 0 rem(20) rem(20);
   background-color: white;
   z-index: 200;
   display: flex;
@@ -51,6 +54,9 @@
   width: 73%;
   padding: rem(20);
   -webkit-border-radius: rem(20);
+  -moz-border-radius: rem(20);
+  -ms-border-radius: rem(20);
+  border-radius: rem(20);
   background-color: white;
   z-index: 3;
   box-shadow: 0px 0px 30px 0px rgba(68, 68, 68, 0.5);
@@ -59,6 +65,9 @@
   line-height: 250%;
   transition: background-color 0.1s;
   -webkit-border-radius: rem(10);
+  -moz-border-radius: rem(10);
+  -ms-border-radius: rem(10);
+  border-radius: rem(10);
   padding-left: rem(10);
   cursor: pointer;
   &:hover {

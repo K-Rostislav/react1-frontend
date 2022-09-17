@@ -150,6 +150,9 @@
   background-color: #faf9f9;
   padding: rem(30) rem(40);
   -webkit-border-radius: rem(20);
+  -moz-border-radius: rem(20);
+  -ms-border-radius: rem(20);
+  border-radius: rem(20);
   display: none;
 }
 .block {

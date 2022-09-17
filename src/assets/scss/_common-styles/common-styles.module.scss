@@ -5,6 +5,9 @@
   display: flex;
   align-items: center;
   -webkit-border-radius: rem(65);
+  -moz-border-radius: rem(65);
+  -ms-border-radius: rem(65);
+  border-radius: rem(65);
   cursor: pointer;
   align-items: center;
   gap: rem(5);
@@ -33,6 +36,9 @@
   background-color: transparent;
   outline: 1px solid #bdbdbd;
   -webkit-border-radius: rem(50);
+  -moz-border-radius: rem(50);
+  -ms-border-radius: rem(50);
+  border-radius: rem(50);
   font-size: rem(16);
   color: #976464;
   cursor: pointer;
@@ -51,6 +57,9 @@
   background-color: transparent;
   outline: 1px solid #bdbdbd;
   -webkit-border-radius: rem(50);
+  -moz-border-radius: rem(50);
+  -ms-border-radius: rem(50);
+  border-radius: rem(50);
   font-size: rem(16);
   color: #bdbdbd;
   cursor: pointer;
@@ -117,6 +126,9 @@
 .Input {
   border: 1px solid #bdbdbd;
   -webkit-border-radius: rem(50);
+  -moz-border-radius: rem(50);
+  -ms-border-radius: rem(50);
+  border-radius: rem(50);
   background-color: transparent;
   &:focus {
     border: 1px solid #976464;
@@ -137,6 +149,9 @@
   width: rem(14);
   height: rem(14);
   -webkit-border-radius: rem(3);
+  -moz-border-radius: rem(3);
+  -ms-border-radius: rem(3);
+  border-radius: rem(3);
   border: 1px solid #bdbdbd;
   cursor: pointer;
   position: relative;
@@ -162,6 +177,9 @@
   width: rem(30);
   height: rem(30);
   -webkit-border-radius: rem(6.5);
+  -moz-border-radius: rem(6.5);
+  -ms-border-radius: rem(6.5);
+  border-radius: rem(6.5);
   border: 1px solid #bdbdbd;
   cursor: pointer;
   position: relative;
@@ -188,6 +206,9 @@
   height: rem(30);
   border: 1px solid #976464;
   -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
   position: relative;
   cursor: pointer;
   &:checked {
@@ -197,6 +218,9 @@
       height: rem(19);
       background: linear-gradient(102.48deg, #976464 -29.03%, #cfa5a5 97.75%);
       -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      border-radius: 50%;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -208,6 +232,9 @@
 .Count {
   background-color: #d3d3b5;
   -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
   font-size: rem(10);
   display: flex;
   justify-content: center;

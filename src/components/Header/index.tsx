@@ -15,7 +15,6 @@ import ClientNavigation from "./ClientNavigation";
 import HeaderModal from "./HeaderModal";
 
 const Header: React.FC = () => {
-  const [menu, setActiveMenu] = React.useState(false);
   const headerHeight = useRef<HTMLElement>(null)
 
 
@@ -43,18 +42,7 @@ const Header: React.FC = () => {
         </Link>
 
         <div className={styles.navigationClient}>
-
           <ClientNavigation/>
-
-          <MediaQuery maxWidth={1024}>
-            <button onClick={() => {setActiveMenu(!menu)}} className={styles.buttonBurger}>
-              <span className={styles.line1}></span>
-              <span className={styles.line2}></span>
-              <span className={styles.line3}></span>
-            </button>
-            <BurgerMenu menu={menu} setActiveMenu={setActiveMenu}/>
-          </MediaQuery>
-
         </div>
       </div>
 
