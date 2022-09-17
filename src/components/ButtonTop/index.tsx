@@ -23,6 +23,15 @@ const ButtonTop: React.FC = () => {
     }
   })
 
+  window.addEventListener('touchmove', () => {
+    const elem = document.querySelector('.Header_header__6370a')
+    if (window.scrollY > elem?.clientHeight!) {
+      setFlag(true)
+    } else {
+      setFlag(false)
+    }
+  })
+
 
   return(
     <div onClick={scroll} className={flag ? cx(styles.button, styles.active) : styles.button}>

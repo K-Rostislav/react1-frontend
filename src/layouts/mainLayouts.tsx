@@ -29,12 +29,6 @@ const MainLayout: React.FC = () => {
     windowScrollPos()
   }, [location])
 
-  window.addEventListener('touchmove', () => {
-    if(window.scrollY > 0) {
-      alert('epofvoev')
-    }
-  })
-
 	return (
     <>
       <Header />
