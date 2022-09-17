@@ -56,7 +56,7 @@ const Register: React.FC = () => {
     confirm_password: yup.string().oneOf([yup.ref('password')], 'Пароль не совпадает').required('Заполните поле')
   }).required();
 
-  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm<IRegister>({
+  const { register, handleSubmit, formState: { errors } } = useForm<IRegister>({
     resolver: yupResolver(schema),
     mode: "onChange"
   });

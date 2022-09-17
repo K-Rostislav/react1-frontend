@@ -1,43 +1,38 @@
-@import "../../assets/scss/_mixins/mixins.scss";
+@import '../../assets/scss/_mixins/mixins.scss';
 
+.Counter {
+  display: flex;
+  align-items: center;
+  gap: rem(15);
+  font-size: rem(14);
+  -webkit-border-radius: rem(50);
+  border: 1px solid #bdbdbd;
+  padding: rem(5) rem(15);
 
-
-
-
-
-.Counter{
+  .minus,
+  .plus {
+    background: none;
+    border: 0;
+    color: #bdbdbd;
+    cursor: pointer;
+    font-size: rem(24);
+  }
+  .disabled {
+    color: #ececec;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-size: rem(24);
+    transition: 0.2s;
+    &:active {
+      color: red;
+    }
+  }
+  .result {
+    color: #bdbdbd;
+    width: rem(10);
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: rem(15);
-    font-size: rem(14);
-    border-radius: rem(50);
-    border: 1px solid #BDBDBD;
-    padding: rem(5) rem(15);
-
-    .minus,
-    .plus{
-        background: none;
-        border: 0;
-        color: #BDBDBD;
-        cursor: pointer;
-        font-size: rem(24);
-    }
-    .disabled{
-        color: #ececec;
-        background: none;
-        border: 0;
-        cursor: pointer;
-        font-size: rem(24);
-        transition: .2s;
-        &:active{
-            color: red;
-        }
-    }
-    .result{
-        color: #BDBDBD;
-        width: rem(10);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  }
 }

@@ -123,7 +123,7 @@ const Search: React.FC = () => {
       />
 
       {open && searchValue && dropList.length > 0 && flag &&
-        <ul ref={dropListRef} className={styles.dropList}>
+        <ul onClick={(event: any) => {event.stopPropagation()}} ref={dropListRef} className={styles.dropList}>
           {dropList.map((item: IItemsCart) => (
             <li 
               onClick={() => searchFunc(item.name)} 
