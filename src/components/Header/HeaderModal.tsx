@@ -22,7 +22,7 @@ const HeaderModal: React.FC = () => {
 
   return(
     <div className={flag ? cx(styles.headerModal, styles.headerModal_active) : cx(styles.headerModal, styles.headerModal_close)}>
-      <div className={cx(styles.container, common.ContainerPadding)}>
+      <div className={cx(styles.container, common.Container)}>
         <PagesNavigation />
         <ClientNavigation />
       </div>

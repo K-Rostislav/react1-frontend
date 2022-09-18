@@ -77,10 +77,10 @@ const Register: React.FC = () => {
   }
 
   return(
-    <div onClick={closeRegister} className={registerFlag ? styles.background : common.DisplayNone}>
-      <form onSubmit={handleSubmit(onSubmit)} onClick={stopPropagation} className={registerFlag ? cx(styles.active, styles.modal) : styles.modal}>
-        <button type="button" onClick={closeRegister} className={styles.close}>
-          <Icon className={styles.icon} size={25} icon="close" />
+    <div onClick={closeRegister} className={registerFlag ? common.ModalBackground : common.DisplayNone}>
+      <form onSubmit={handleSubmit(onSubmit)} onClick={stopPropagation} className={registerFlag ? cx(common.active, common.modal) : common.modal}>
+        <button type="button" onClick={closeRegister} className={common.close}>
+          <Icon className={common.icon} size={25} icon="close" />
         </button>
         <h2 className={styles.title}>Регистрация</h2>
 

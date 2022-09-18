@@ -15,6 +15,7 @@ type IAuthUser = {
   patronymic: string
   phone: number
   email: string
+  avatarUrl?: string
 }
 
 interface Iflag {
@@ -23,6 +24,8 @@ interface Iflag {
   forgotFlag: boolean
   token: string
   user: IAuthUser | null
+  profileSection: string
+  profileModal: boolean
   status: EnumStatus
 }
 
@@ -32,6 +35,8 @@ const initialState: Iflag = {
   forgotFlag: false,
   token: localStorage.getItem('token') ?? sessionStorage.getItem('token') ?? '',
   user: null,
+  profileSection: 'myData',
+  profileModal: false,
   status: EnumStatus.LOADING
 }
 const authSlice = createSlice({
@@ -50,6 +55,15 @@ const authSlice = createSlice({
     setToken(state, action: PayloadAction<string>){
       state.token = action.payload
     },
+    setUser(state, action: PayloadAction<any>){
+      state.user = action.payload
+    },
+    setSection(state, action: PayloadAction<string>){
+      state.profileSection = action.payload
+    },
+    setModal(state, action: PayloadAction<boolean>){
+      state.profileModal = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(profileAction.pending, (state) => {
@@ -67,6 +81,6 @@ const authSlice = createSlice({
   },
 })
 
-export const { setLogin, setRegister, setForgot, setToken } = authSlice.actions
+export const { setLogin, setRegister, setForgot, setToken, setUser, setSection, setModal } = authSlice.actions
 
 export default authSlice.reducer

@@ -23,7 +23,7 @@ const Header: React.FC = () => {
 
       <MediaQuery minWidth={1024}>
       <div className={styles.headerTop}>
-        <div className={common.ContainerPadding}>
+        <div className={common.Container}>
           <TopNavigation/>
         </div>
       </div>
@@ -52,9 +52,9 @@ const Header: React.FC = () => {
         </div>
       </MediaQuery>
 
-      {/* <MediaQuery minWidth={1200}> */}
+      <MediaQuery minWidth={1200}>
         <HeaderModal />
-      {/* </MediaQuery> */}
+      </MediaQuery>
 
     </header>
   );

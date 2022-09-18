@@ -84,6 +84,14 @@
     @media(max-width: em(360)){
         grid-template-columns: 1fr;
     }
+    .skeleton{
+        flex-direction: column;
+        -webkit-border-radius: rem(20);
+        -moz-border-radius: rem(20);
+        -ms-border-radius: rem(20);
+        border-radius: rem(20);
+        overflow: hidden;
+    }
 }
 
 

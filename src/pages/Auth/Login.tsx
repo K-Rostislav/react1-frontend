@@ -75,10 +75,10 @@ const Login: React.FC = () => {
   }
 
   return(
-    <div onClick={closeLogin} className={loginFlag ? styles.background : common.DisplayNone}>
-      <form onSubmit={handleSubmit(onSubmit)} onClick={stopPropagation} className={loginFlag ? cx(styles.modal, styles.active) : styles.modal}>
-        <button type="button" onClick={closeLogin} className={styles.close}>
-          <Icon className={styles.icon} size={25} icon="close" />
+    <div onClick={closeLogin} className={loginFlag ? common.ModalBackground : common.DisplayNone}>
+      <form onSubmit={handleSubmit(onSubmit)} onClick={stopPropagation} className={loginFlag ? cx(common.modal, common.active) : common.modal}>
+        <button type="button" onClick={closeLogin} className={common.close}>
+          <Icon className={common.icon} size={25} icon="close" />
         </button>
         <h2 className={styles.title}>Войти в личный кабинет</h2>
         <div className={styles.blockInput}>

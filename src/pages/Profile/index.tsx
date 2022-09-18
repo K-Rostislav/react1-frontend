@@ -1,40 +1,40 @@
-import React from "react"
-import cx from "classnames"
-import Icon from "../../components/_icons/Icon"
-import { useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
-import { selectorFavouritesSlice } from "../../redux/favouritesSlice/slectors"
-import { selectorAuthSlice } from "../../redux/authSlice/selectors"
-import { useAppDispatch } from "../../redux/store"
-import { profileAction } from "../../redux/actions/profileAction"
+import React, { ReactNode } from "react";
+import cx from "classnames";
+import Icon from "../../components/_icons/Icon";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectorFavouritesSlice } from "../../redux/favouritesSlice/slectors";
+import { selectorAuthSlice } from "../../redux/authSlice/selectors";
+import { useAppDispatch } from "../../redux/store";
+import { profileAction } from "../../redux/actions/profileAction";
 import { useForm, SubmitHandler  } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup"
+import { setModal, setSection, setUser } from "../../redux/authSlice/slice";
+import * as yup from "yup";
 
+import styles from "./Profile.module.scss";
+import common from "../../assets/scss/_common-styles/common-styles.module.scss";
 
-import styles from "./Profile.module.scss"
-import common from "../../assets/scss/_common-styles/common-styles.module.scss"
+import Card from "../../components/Card";
+import { setToken } from "../../redux/authSlice/slice";
+import axios from "../../redux/axios";
+import UploadModal from "./UploadModal";
 
-import Card from "../../components/Card"
-import { setToken } from "../../redux/authSlice/slice"
-import InputMyData from "./InputMyData"
-import axios from "../../redux/axios"
-
-// interface IForm {
-//   name: string
-//   surename: string
-//   patronymic: string
-//   phone: string
-//   email: string
-// }
+interface IForm {
+  name: string
+  surename: string
+  patronymic: string
+  phone: string
+  email: string
+}
 
 const Profile: React.FC = () => {
   const schema = yup.object({
-    name: yup.string().required('Заполните поле'),
-    surename: yup.string().required('Заполните поле'),
-    patronymic: yup.string().required('Заполните поле'),
-    phone: yup.string().required('Заполните поле'),
-    email: yup.string().email('Введите валидный email').required('Заполните поле'),
+    name: yup.string(),
+    surename: yup.string(),
+    patronymic: yup.string(),
+    phone: yup.string(),
+    email: yup.string().email('Введите валидный email'),
   }).required();
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -43,44 +43,47 @@ const Profile: React.FC = () => {
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const [state, setState] = React.useState<string>('myData')
-  const [myData, setMyData] = React.useState({})
+  const [input, setInput] = React.useState<string>('')
   const { favouritesItems } = useSelector(selectorFavouritesSlice)
-  const { user, token } = useSelector(selectorAuthSlice)
+  const { user, token, profileSection } = useSelector(selectorAuthSlice)
 
-  const arr = [
-    'name', 'surename', 'patronymic', 'phone', 'email'
-  ]
-
-  const data = user && [
+  const data = [
     {
+      id: 1,
       name: 'Имя',
-      item: user!.name
+      placeholder: user?.name,
+      register: 'name',
+      errors: errors.name,
+      message: errors.name?.message
     },
     {
+      id: 2,
       name: 'Фамилия',
-      item: user!.surename
+      placeholder: user?.surename,
+      register: 'surename',
+      errors: errors.surename,
     },
     {
+      id: 3,
       name: 'Отчество',
-      item: user!.patronymic
+      placeholder: user?.patronymic,
+      register: 'patronymic',
+      errors: errors.patronymic,
     },
-    // {
-    //   name: 'Дата рождения',
-    //   item: ''
-    // },
     {
+      id: 4,
       name: 'Номер',
-      item: user!.phone
+      placeholder: user?.phone,
+      register: 'phone',
+      errors: errors.phone,
     },
     {
+      id: 5,
       name: 'E-mail',
-      item: user!.email
+      placeholder: user?.email,
+      register: 'email',
+      errors: errors.email,
     },
-    // {
-    //   name: 'Адрес',
-    //   item: ''
-    // },
   ]
 
   const logout = () => {
@@ -90,26 +93,38 @@ const Profile: React.FC = () => {
     navigate('/')
   } 
   const openMyData = () => {
-    setState('myData')
+    dispatch(setSection('myData'))
   }
   const openFavourites = () => {
-    setState('favourites')
+    dispatch(setSection('favourites'))
   }
-  const setData = (name: any, value: any) => {
-    setMyData({...myData,[name]: value})
-    console.log(myData)
+  const openModal = () => {
+    dispatch(setModal(true))
   }
-  const onSubmit = async (props: any) => {
-    // await axios.post('/me/edit', {
-    //   surename,
-    //   name,
-    //   patronymic,
-    //   email,
-    //   phone: Number(phone),
-    // })
-    console.log(props)
+  const openInput = (nameInput: string) => {
+    setInput(nameInput)
   }
-
+  const blurInput = () => {
+    setInput('')
+  }
+  const onSubmit = async ({surename, name, patronymic, email, phone}: any) => {
+    await axios.patch('/me/edit', {
+      _id: user?._id,
+      surename: surename ? surename : user?.surename,
+      name: name ? name : user?.name,
+      patronymic: patronymic ? patronymic : user?.patronymic,
+      email: email ? email : user?.email,
+      phone: phone ? Number(phone) : Number(user?.phone),
+    },
+    {
+      headers: {
+        authorization: token
+      }
+    }).then(response => {
+      dispatch(setUser(response.data))
+      setInput('')
+    })
+  }
 
   React.useEffect(() => {
     !user && dispatch(profileAction(token!))
@@ -126,7 +141,17 @@ const Profile: React.FC = () => {
         <div className={styles.block}>
           <div className={styles.user}>
             <div className={styles.img}>
-              <img src="https://via.placeholder.com/100x100" alt="" />
+              <div onClick={openModal} className={styles.img__wrapper}>
+                {user.avatarUrl ?
+                <img src={user.avatarUrl} alt="" />
+                :
+                <img src="https://via.placeholder.com/100x100" alt="" />
+                }
+              </div>
+              <div className={styles.add}>
+                <span></span>
+                <span></span>
+              </div>
             </div>
             <p className={styles.name}>{user!.name} {user!.patronymic}</p>
           </div>
@@ -141,40 +166,40 @@ const Profile: React.FC = () => {
           <button onClick={logout} className={styles.back}>Выйти из личного кабинета</button>
         </div>
 
-        {state == 'myData' &&
+        {profileSection == 'myData' &&
           <div className={styles.block}>
             <h2 className={cx(styles.name, styles.name_margin)}>Мои данные</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className={styles.profileData}>
-                {data?.map((item, index) => (
-                  // <InputMyData 
-                  //   key={index} 
-                  //   item={item.item}
-                  //   name={item.name}
-                  //   setData={setData}
-                  // />
-                  <div key={index}>
-                    <div className={cx(styles.input, common.Input)}>
-                      <p>{item.name}:</p>
-                      <input 
-                        type="text"
-                        placeholder={String(item.item)}
-                        {...register(`${arr.map((item) => {return item})}`)}
-                      />
-                      <div className={styles.edit}>
+
+                {data.map((item) => (
+                  <div key={item.id} className={input == item.register ? cx(styles.input, styles.input_active, common.Input) : cx(styles.input, common.Input)}>
+                    <p className={styles.nameInput}>{item.name}:</p>
+                    <input
+                      type="text"
+                      placeholder={String(item.placeholder)}
+                      {...register(item.register)}
+                    />
+                    {input == item.register ?
+                      <div className={styles.flex}>
+                        <Icon onClick={blurInput} className={styles.icon_save} icon="complete" />
+                      </div>
+                      :
+                      <div onClick={() => {openInput(item.register)}} className={styles.edit}>
                         <Icon className={styles.icon} icon="edit" />
                         Изменить
                       </div>
-                    </div>
-                    {errors.name && <p className={common.ErrorMessage}>flfllflf</p>}
+                    }
+                    {item.errors && <p className={cx(styles.errorMessage,common.ErrorMessage)}><>{item.errors.message}</></p>}
                   </div>
                 ))}
+
               </div>
               <button type="submit" className={cx(styles.save, common.BtnBackground)}>Сохранить данные</button>
             </form>
           </div>
         }
-        {state == 'favourites' &&
+        {profileSection == 'favourites' &&
           <div className={styles.block}>
             <h2 className={cx(styles.name, styles.name_margin)}>Избранные товары</h2>
             <ul className={styles.grid_items}>
@@ -194,6 +219,9 @@ const Profile: React.FC = () => {
           </div>
         }
       </div>
+      
+      <UploadModal />
+
     </section>
   )
 }

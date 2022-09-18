@@ -52,6 +52,7 @@
     color: white;
   }
 }
+
 .BtnGray {
   border: 0;
   background-color: transparent;
@@ -143,6 +144,7 @@
     }
   }
 }
+
 .Сheckbox {
   appearance: none;
   background-color: transparent;
@@ -244,6 +246,96 @@
   width: rem(20);
   height: rem(20);
   padding: 0;
+}
+
+.ModalBackground {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100vh;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  .modal {
+    z-index: 1;
+    background-color: white;
+    padding: rem(40) rem(105) rem(80);
+    @include adp('padding-left', 105, 15);
+    @include adp('padding-right', 105, 15);
+    -webkit-border-radius: rem(20);
+    -moz-border-radius: rem(20);
+    -ms-border-radius: rem(20);
+    border-radius: rem(20);
+    box-shadow: 0px 0px 30px rgba(68, 68, 68, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    animation-name: ease, animation;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+    @media (max-width: em(1024)) {
+      width: 100%;
+      bottom: 0;
+      height: 100%;
+      -webkit-border-radius: 0;
+      overflow: auto;
+    }
+    @media (min-width: em(1024)) {
+      left: 50%;
+      top: 50%;
+    }
+  }
+  .close {
+    background: none;
+    border: 0;
+    margin-bottom: rem(40);
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+    right: rem(-40);
+    transition: 0.2s;
+    &:hover {
+      transform: rotate(90deg);
+    }
+    &:active {
+      transform: rotate(90deg) scale(0.8);
+    }
+    @media (max-width: em(1024)) {
+      right: 0;
+    }
+    .icon {
+      color: #976464;
+    }
+  }
+  .active {
+    @media (min-width: em(1024)) {
+      @keyframes animation {
+        0% {
+          transform: translate(-50%, -50%) scale(0.7);
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        75% {
+          transform: translate(-50%, -50%) scale(0.98);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    }
+    @media (max-width: em(1024)) {
+      @keyframes animation {
+        0% {
+          transform: translateY(100%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
 }
 
 .ErrorInput {

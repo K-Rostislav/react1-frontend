@@ -53,10 +53,10 @@ const Forgot: React.FC = () => {
   }
 
   return(
-    <div onClick={closeForgot} className={forgotFlag ? styles.background : common.DisplayNone}>
-      <form onSubmit={handleSubmit(onSubmit)} onClick={stopPropagation} className={forgotFlag ? cx(styles.modal, styles.active) : styles.modal}>
-        <button type="button" onClick={closeForgot} className={styles.close}>
-          <Icon className={styles.icon} size={25} icon="close" />
+    <div onClick={closeForgot} className={forgotFlag ? common.ModalBackground : common.DisplayNone}>
+      <form onSubmit={handleSubmit(onSubmit)} onClick={stopPropagation} className={forgotFlag ? cx(common.modal, common.active) : common.modal}>
+        <button type="button" onClick={closeForgot} className={common.close}>
+          <Icon className={common.icon} size={25} icon="close" />
         </button>
         <h2 className={styles.title}>Забыли пароль?</h2>
         <div className={cx(styles.blockInput, styles.marginUnset)}>

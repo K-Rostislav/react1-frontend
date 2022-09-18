@@ -34,7 +34,16 @@ const Catalog: React.FC = () => {
   const isMounted = React.useRef<boolean>(false)
   const isSearch = React.useRef<boolean>(false)
 
-  const skeletons = [...new Array(8)].map((_, index) => (<li key={index}><Skeleton/></li>))
+  const skeletons = [...new Array(8)].map((_, index) => (<li className={styles.skeleton} key={index}><Skeleton/></li>))
+  const items = products.map((item) => (
+    <Card key={item._id}
+      _id={item._id} 
+      name={item.name} 
+      image={item.image} 
+      price={item.price}
+    />
+  ))
+
   const fetchProducts = () => {
     const searchUrl = `${searchParam ? `search=${searchParam}` : ''}`
     const orderByUrl = `${orderByParam ? `${searchParam && '&'}orderBy=${orderByParam}` : ''}`
@@ -48,14 +57,6 @@ const Catalog: React.FC = () => {
   const setFlag = () => {
     dispatch(openSidebar(!flag))
   }
-  const items = products.map((item) => (
-    <Card key={item._id}
-      _id={item._id} 
-      name={item.name} 
-      image={item.image} 
-      price={item.price}
-    />
-  ))
 
   useEffect(() => {
     if (isMounted.current) {

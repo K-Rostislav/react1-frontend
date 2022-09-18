@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectorCartSlice } from "../../redux/cartSlice/selectors";
 import { useAppDispatch } from "../../redux/store";
-import { setLogin } from "../../redux/authSlice/slice";
+import { setLogin, setSection } from "../../redux/authSlice/slice";
 import { noScrollBody } from "../../utils/noScrollBody";
 import { selectorAuthSlice } from "../../redux/authSlice/selectors";
 import { selectorFavouritesSlice } from "../../redux/favouritesSlice/slectors";
@@ -32,6 +32,10 @@ const ClientNavigation: React.FC = () => {
     dispatch(setLogin(true))
     noScrollBody(true)
   }
+  const openFavorites = () => {
+    dispatch(setSection('favourites'))
+  }
+
 
   React.useEffect(() => {
     const json = JSON.stringify(cartItems)
@@ -52,7 +56,7 @@ const ClientNavigation: React.FC = () => {
       <Search />
       {token ?
         <>
-          <Link to="" className={cx(common.BtnBackgroundNone, styles.button)}>
+          <Link onClick={openFavorites} to="profile" className={cx(common.BtnBackgroundNone, styles.button)}>
             <Icon className={styles.btnIcon} color="#976464" size={15} icon="favourites"/>
             <p className={styles.text}>Избранное</p>
             {favouritesCount !==0 && <div className={cx(styles.count, common.Count)}>{favouritesCount}</div>}

@@ -17,6 +17,7 @@
     "normalize.css": "^8.0.1",
     "qs": "^6.11.0",
     "react": "^18.2.0",
+    "react-avatar-edit": "^1.2.0",
     "react-content-loader": "^6.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.33.1",
@@ -59,7 +60,9 @@
     ]
   },
   "devDependencies": {
+    "@types/base-64": "^1.0.0",
     "@types/lodash.debounce": "^4.0.7",
+    "@types/react-avatar-editor": "^13.0.0",
     "@types/react-instantsearch-dom": "^6.12.3"
   }
 }

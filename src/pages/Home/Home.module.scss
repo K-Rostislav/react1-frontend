@@ -13,7 +13,7 @@
   justify-content: center;
   margin-bottom: rem(70);
   align-items: center;
-  @include adp('margin-bottom', 70, 30);
+  @include adp('margin-bottom', 70, 20);
   @include adp('gap', 40, 10);
   input {
     width: rem(70);
@@ -208,7 +208,7 @@
   margin-bottom: rem(15);
   position: relative;
   z-index: 1;
-  @include adp('font-size', 24, 20);
+  @include adp('font-size', 24, 18);
 }
 .productPrice {
   color: #5e5c5a;
@@ -404,6 +404,7 @@
 .sectionForm {
   padding: rem(200) 0 rem(60);
   @include adp('padding-top', 200, 20);
+  @include adp('padding-bottom', 60, 30);
   position: relative;
   @media (max-width: em(480)) {
     padding-left: rem(50);
