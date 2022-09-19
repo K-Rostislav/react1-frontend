@@ -9,6 +9,7 @@ import { setLogin, setSection } from "../../redux/authSlice/slice";
 import { noScrollBody } from "../../utils/noScrollBody";
 import { selectorAuthSlice } from "../../redux/authSlice/selectors";
 import { selectorFavouritesSlice } from "../../redux/favouritesSlice/slectors";
+import axios from "../../redux/axios";
 
 import styles from "./Header.module.scss";
 import common from "../../assets/scss/_common-styles/common-styles.module.scss";
@@ -16,6 +17,7 @@ import common from "../../assets/scss/_common-styles/common-styles.module.scss";
 import Search from "../Search";
 import MediaQuery from "react-responsive";
 import BurgerMenu from "./BurgerMenu";
+import { profileAction } from "../../redux/actions/profileAction";
 
 
 
@@ -24,7 +26,7 @@ const ClientNavigation: React.FC = () => {
   const location = useLocation()
   const { cartItems, totalCount } = useSelector(selectorCartSlice)
   const { favouritesItems, favouritesCount } = useSelector(selectorFavouritesSlice)
-  const { token } = useSelector(selectorAuthSlice)
+  const { token, user } = useSelector(selectorAuthSlice)
   const [menu, setActiveMenu] = React.useState(false);
 
 
@@ -36,11 +38,27 @@ const ClientNavigation: React.FC = () => {
     dispatch(setSection('favourites'))
   }
 
-
   React.useEffect(() => {
-    const json = JSON.stringify(cartItems)
-    localStorage.setItem('cart', json)
+      dispatch(profileAction(token!))
+      if (token) {
+      const json = JSON.stringify(cartItems)
+      localStorage.setItem('cart', json)
+      axios.patch('/cart',
+        {
+          _id: user?._id,
+          cartItems: JSON.parse(localStorage.getItem('cart') ?? '')
+        }
+      ).then(response => {
+        const json = JSON.stringify(response.data.cart)
+        localStorage.setItem('cart', json)
+      })
+    } else {
+      const json = JSON.stringify(cartItems)
+      localStorage.setItem('cart', json)
+    }
+  
   }, [cartItems])
+
 
   React.useEffect(() => {
     const json = JSON.stringify(favouritesItems)
